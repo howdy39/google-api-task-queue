@@ -2,7 +2,7 @@
 
 
 # 事前準備
-JDKやMavenは以下のページを参照しインストールしておく  
+ JDK や Maven は以下のページを参照しインストールしておく  
 [Java の App Engine スタンダード環境のクイックスタート  |  Java の App Engine スタンダード環境  |  Google Cloud Platform](https://cloud.google.com/appengine/docs/java/quickstart?hl=ja)
 
 
