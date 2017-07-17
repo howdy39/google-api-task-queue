@@ -23,8 +23,15 @@ mvn clean package
 ```
 
 ## アプリケーションのデプロイ
-適宜`appengine-web.xml`を書き換えること
+
+### defaultサービスのデプロイ
+
 ```
-mvn appengine:update
+./deploy-default.sh
 ```
 
+### apiサービスのデプロイ
+
+```
+./deploy-api.sh
+```

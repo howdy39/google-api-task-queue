@@ -1,11 +1,14 @@
 package jp.howdylikes.demo;
 
+import com.google.appengine.api.taskqueue.Queue;
+import com.google.appengine.api.taskqueue.QueueFactory;
+import com.google.appengine.api.taskqueue.TaskOptions;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.logging.Logger;
 
 /**
@@ -17,14 +20,24 @@ public class HelloServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        PrintWriter out = resp.getWriter();
-        out.println("Hello, world!!!");
 
-        log.severe("severe");
-        log.warning("warning");
-        log.info("info");
-        log.fine("fine");
-        log.finer("finer");
-        log.finest("finest");
+        Queue queue = QueueFactory.getQueue("api-queue");
+
+        for (int i = 0; i < 100; i++) {
+            String spreadsheetId = "id";
+            String row = String.valueOf(i);
+            String column = "0";
+            String value = "hoge";
+
+            TaskOptions taskOptions = TaskOptions.Builder.withUrl("/addApiQueue")
+                    .method(TaskOptions.Method.GET)
+                    .param("spreadsheetId", spreadsheetId)
+                    .param("row", row)
+                    .param("column", column)
+                    .param("value", value);
+            queue.add(taskOptions);
+
+            log.info(String.format("spreadsheetId:%s row:%s column:%s value:%s", spreadsheetId, row, column, value));
+        }
     }
 }

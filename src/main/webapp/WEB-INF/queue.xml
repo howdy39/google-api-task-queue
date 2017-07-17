@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<queue-entries>
+    <queue>
+        <name>api-queue</name>
+        <rate>1/s</rate>
+        <bucket-size>1</bucket-size>
+        <max-concurrent-requests>1000</max-concurrent-requests>
+        <retry-parameters>
+            <task-retry-limit>5</task-retry-limit>
+        </retry-parameters>
+        <target>api</target>
+    </queue>
+</queue-entries>

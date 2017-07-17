@@ -11,4 +11,13 @@
         <servlet-name>hello</servlet-name>
         <url-pattern>/hello</url-pattern>
     </servlet-mapping>
+    <servlet>
+        <servlet-name>addApiQueue</servlet-name>
+        <servlet-class>jp.howdylikes.demo.ApiQueueHandleServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>addApiQueue</servlet-name>
+        <url-pattern>/addApiQueue</url-pattern>
+    </servlet-mapping>
+
 </web-app>
